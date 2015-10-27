@@ -1,0 +1,40 @@
+{
+  "name": "hue-discover",
+  "description": "Discover Philips Hue API with ssdp in your network",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jsfi/hue-discover#readme",
+  "author": {
+    "name": "Martin Sachse",
+    "email": "martin.sachse@gmail.com",
+    "url": "http://jsfi.io"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/eslint/bin/eslint.js index.js lib/*.js && node node_modules/mocha/bin/mocha test/**/*_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsfi/hue-discover.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsfi/hue-discover/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "keywords": [
+    "Hue",
+    "Philips Hue",
+    "discover",
+    "upnp"
+  ],
+  "dependencies": {
+    "got": "^5.0.0",
+    "node-uuid": "^1.4.3",
+    "peer-ssdp": "0.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^1.7.3"
+  }
+}
