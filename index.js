@@ -13,10 +13,9 @@ const uuid = require('node-uuid');
 const got = require('got');
 
 module.exports = function(options) {
-    let start = +new Date();
     let configuration = Object.assign({
         timeout: 45000,
-        devices: 1,
+        bridges: 1,
         description: '/description.xml',
         find: 'meethue.com'
     }, options);
@@ -26,7 +25,7 @@ module.exports = function(options) {
         let usn = uuid.v4();
         let location = uuid.v4();
         let server = 'hue-discover-' + usn.split('-').pop();
-        let devices = [];
+        let bridges = [];
         let timer;
 
         peer.on('ready', onReady)
@@ -52,10 +51,10 @@ module.exports = function(options) {
             got(device.address + configuration.description)
             .then(description => {
                 if (~description.body.indexOf(configuration.find)) {
-                    devices.push(device.address);
+                    bridges.push(device.address);
 
-                    if (devices.length == configuration.devices) {
-                        resolve(devices);
+                    if (bridges.length == configuration.bridges) {
+                        resolve(bridges);
                         close();
                     }
                 }
@@ -67,7 +66,6 @@ module.exports = function(options) {
         }
 
         function close() {
-            console.log((+new Date() - start) / 1000);
             clearTimeout(timer);
             peer.byebye({
                 NT: 'upnp:rootdevice',
@@ -80,7 +78,7 @@ module.exports = function(options) {
         }
 
         function notFound() {
-            resolve(devices);
+            resolve(bridges);
             close();
         }
     });
