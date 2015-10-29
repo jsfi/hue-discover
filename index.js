@@ -1,5 +1,5 @@
 /*
- * hue-find
+ * hue-discover
  * https://github.com/jsfi/hue-discover
  *
  * Copyright (c) 2015 Martin Sachse
