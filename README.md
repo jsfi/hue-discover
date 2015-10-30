@@ -46,12 +46,6 @@ default: `1`
 
 This option configures the quantity of bridges you expect in the network. If the quantity is found the function will return before the timeout ends.
 
-### Description
-
-default: `'/description.xml'`
-
-This option configures the relative path of the description file, that will be searched.
-
 ### Find
 
 default: `'meethue.com'`

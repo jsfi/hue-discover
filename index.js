@@ -16,7 +16,6 @@ module.exports = function(options) {
     let configuration = Object.assign({
         timeout: 45000,
         bridges: 1,
-        description: '/description.xml',
         find: 'meethue.com'
     }, options);
 
@@ -48,7 +47,11 @@ module.exports = function(options) {
         }
 
         function onNotify(headers, device) {
-            got(device.address + configuration.description)
+            if (!headers.LOCATION) {
+                return;
+            }
+
+            got(headers.LOCATION)
             .then(description => {
                 if (~description.body.indexOf(configuration.find)) {
                     bridges.push(device.address);
