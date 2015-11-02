@@ -29,7 +29,6 @@ let bridges = require('./hue-discover')();
 {
     timeout: 45000,
     bridges: 1,
-    description: '/description.xml',
     find: 'meethue.com'
 }
 ```
